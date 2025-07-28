@@ -1,0 +1,5 @@
+.vscode/settings.json
+inventory/
+*.log
+ansible-navigator.yml
+ansible.cfg
