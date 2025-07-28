@@ -11,7 +11,7 @@
   register: capsule_installer_output
   when: 
     - service.rc != 0
-    - satellite_haproxy is false
+    - satellite_loadbalanced is false
 
 - name: Run the capsule installer with load balancing
   ansible.builtin.command: >-
@@ -20,5 +20,5 @@
   register: capsule_installer_output
   when:
     - service.rc != 0
-    - satellite_haproxy is true
+    - satellite_loadbalanced is true
 ...

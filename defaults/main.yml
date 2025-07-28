@@ -10,10 +10,11 @@ capsule_min_pulp_size: 300
 capsule_min_pgsql_size: 20
 
 # Storage
-capsule_pulp_size: 1500g
-capsule_pgsql_size: 150g
+capsule_pulp_size: 8192g
+capsule_pgsql_size: 250g
+capsule_httpd_size: 7g
 capsule_data_device: /dev
-capsule_vg_name: cap_vg01
+capsule_vg_name: vgsat
 capsule_req_dirs:
   - mount_point: /var/lib/pulp
     lv_name: pulp
@@ -21,7 +22,9 @@ capsule_req_dirs:
   - mount_point: /var/lib/pgsql
     lv_name: pgsql
     lv_size: "{{ capsule_pgsql_size }}"
-
+  - mount_point: /var/lib/httpd
+    lvname: httpd
+    lv_size: "{{ capsule_httpd_size }}"
 # Packages
 satellite_capsule_packages:
   - satellite-capsule
@@ -31,7 +34,8 @@ satellite_capsule_packages:
   - vim 
   - bash-completion 
   - bind-utils
-
+  - screen
+  - tmux
 satellite_installer_scenario: "capsule"
 
 # Administration
@@ -42,10 +46,9 @@ satellite_admin_password:
 satellite_capsule_organization:
 # Activation Key
 satellite_capsule_ak:
-
 satellite_capsule_location:
-satellite_fqdn:
-satellite_server_url:
+satellite_fqdn: "satellite.com"
+satellite_server_url: "https://{{ satellite_fqdn }}"
 satellite_capsule_sync_wait_time: 86400
 
 # API authentication credentials(provided by AAP credentials)
@@ -66,8 +69,8 @@ satellite_api_password: "{{ Satellite_API_token_US }}"
 # satellite_capsule_public_ip: "192.168.2.4"
 
 # Load Balancing
-satellite_haproxy: false
-# satellite_loadbalancer_fqdn:
+satellite_loadbalanced: true
+satellite_loadbalancer_fqdn: "loadbalancer.ref"
 # satellite_loadbalancer_ak:
 satellite_loadbalancer_ports:
   - 80/tcp

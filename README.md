@@ -51,7 +51,7 @@ Contains all variables in the [defaults variable file](defaults/main.yml) which 
 |`satellite_capsule_location`||string|The Location that the Capsule will be in|yes|
 |`satellite_fqdn`||string|The disconnected Satellite to register the Capsule to|yes|
 |`satellite_capsule_sync_wait_time`|86400|integer|The amount of time in seconds for Ansible to wait for the initial Capsule sync to finish|yes|
-|`satellite_haproxy`|false|boolean|Set to true if loadbalancing is desired|yes|
+|`satellite_loadbalanced`|false|boolean|Set to true if loadbalancing is desired|yes|
 |`satellite_loadbalancer_fqdn`||string|The FQDN of the loadbalancer|no|
 |`satellite_loadbalancer_ak`||string|Activation key used to register the loadbalancer to Satellite|no|
 |`satellite_loadbalancer_ports`|See vars file for default values|list|Required ports to open on the loadbalancer|no|
