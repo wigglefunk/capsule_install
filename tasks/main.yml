@@ -46,9 +46,4 @@
 - name: Sync Capsule
   ansible.builtin.include_tasks:
     file: 10_sync_capsule.yml
-
-- name: Configure Load Balancing
-  ansible.builtin.include_tasks:
-    file: 11_haproxy.yml
-  when: satellite_loadbalanced is true
 ...
