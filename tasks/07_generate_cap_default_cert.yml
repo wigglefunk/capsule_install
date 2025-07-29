@@ -32,7 +32,7 @@
         - not (existing_tarball.stat.exists)
         - satellite_loadbalanced is false
 
-    - name: Generate Capsule Certificate | Generate the cert with HAProxy # noqa: no-changed-when
+    - name: Generate Capsule Certificate | Generate the cert with Loadbalancer # noqa: no-changed-when
       ansible.builtin.command: >-
         capsule-certs-generate --foreman-proxy-fqdn {{ ansible_fqdn }}
         --certs-tar "/root/capsule_cert/{{ ansible_fqdn }}-capsule-certs.tar"
