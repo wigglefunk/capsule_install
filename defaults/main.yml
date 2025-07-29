@@ -71,12 +71,6 @@ satellite_api_password: "{{ Satellite_API_token_US }}"
 # Load Balancing
 satellite_loadbalanced: true
 satellite_loadbalancer_fqdn: "loadbalancer.ref"
-# satellite_loadbalancer_ak:
-satellite_loadbalancer_ports:
-  - 80/tcp
-  - 443/tcp
-  - 8000/tcp
-  - 9090/tcp
 
 # Install
 satellite_installer_options:
@@ -98,7 +92,7 @@ satellite_installer_loadbalanced_options:
   - '--foreman-proxy-trusted-hosts {{ ansible_fqdn }}'
   - '--foreman-proxy-oauth-consumer-key {{ foreman_proxy_oauth_consumer_key }}'
   - '--foreman-proxy-oauth-consumer-secret {{ foreman_proxy_oauth_consumer_secret }}'
-  - '--foreman-proxy-plugin-remote-execution-script-mode=ssh'
+  - '--foreman-proxy-plugin-remote-execution-script-mode'
   - '--certs-tar-file /root/capsule_cert/{{ ansible_fqdn }}/{{ ansible_fqdn }}-capsule-certs.tar'
   - '--enable-foreman-proxy-plugin-remote-execution-script'
   - '--foreman-proxy-content-enable-docker=false'
